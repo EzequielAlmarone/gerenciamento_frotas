@@ -9,5 +9,4 @@ public class GerenciamentoFrotasApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GerenciamentoFrotasApplication.class, args);
 	}
-
 }
