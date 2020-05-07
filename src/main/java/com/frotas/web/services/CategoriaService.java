@@ -10,4 +10,5 @@ public interface CategoriaService {
 	void delete(Long id);
 	Categoria findById(Long id);
 	List<Categoria> findAll();
+	boolean categoriaTemVeiculo(Long id);
 }

@@ -1,15 +1,15 @@
 package com.frotas.web.domain.enums;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum Combustivel {
-	GASOLINACOMUM (1, "Gasolina comum"),
-	GASOLINAADITIVADA (2, "Gasolina Aditivada"),
-	ETANOL (3, "Etanol"),
-	DIESEL (4, "Diesel"),
-	GASNATURALVEICULAR (5, "Gás Natural Veicular");
-	
+	ETANOL(1, "Etanol"), DIESEL(2, "Diesel"), GASNATURALVEICULAR(3, "Gás Natural Veicular"),
+	GASOLINAADITIVADA(4, "Gasolina Aditivada"), GASOLINACOMUM(5, "Gasolina comum");
+
 	private int cod;
 	private String descricao;
-	
+
 	private Combustivel(int cod, String descricao) {
 		this.cod = cod;
 		this.descricao = descricao;
@@ -22,25 +22,24 @@ public enum Combustivel {
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 	public static Combustivel toEnum(Integer cod) {
-		if(cod == null) {
+		if (cod == null) {
 			return null;
 		}
-		for(Combustivel x : Combustivel.values()) {
-			if(cod.equals(x.getCod())) {
+		for (Combustivel x : Combustivel.values()) {
+			if (cod.equals(x.getCod())) {
 				return x;
-			}	
+			}
 		}
-		throw new IllegalArgumentException("Id invalido: " + cod );
+		throw new IllegalArgumentException("Id invalido: " + cod);
 	}
 
-
-	
-	
-	
-	
-	
-	
-
+	public static List<Combustivel> getEnum() {
+		List<Combustivel> lista = new ArrayList<>();
+		for (Combustivel x : Combustivel.values()) {
+			lista.add(x);
+		}
+		return lista;
+	}
 }

@@ -2,6 +2,8 @@ package com.frotas.web.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
@@ -10,7 +12,7 @@ import com.frotas.web.domain.enums.Combustivel;
 @SuppressWarnings("serial")
 @Entity
 public class Veiculo extends AbstractEntity<Long> {
-	
+
 	@Column(nullable = false, length = 20)
 	private String ano;
 	@Column(nullable = false, length = 20)
@@ -24,7 +26,8 @@ public class Veiculo extends AbstractEntity<Long> {
 	@Column(name = "capacidade_tanque", nullable = false, length = 10)
 	private Integer capacidadeTanque;
 	@Column(name = "tipo_combustivel", nullable = false, length = 70)
-	private Integer tipoCombustivivel;
+	@Enumerated(EnumType.ORDINAL)
+	private Combustivel tipoCombustivel;
 	@ManyToOne
 	@JoinColumn(name = "id_fipe_pk")
 	private Fipe fipe;
@@ -81,11 +84,11 @@ public class Veiculo extends AbstractEntity<Long> {
 	}
 
 	public Combustivel getTipoCombustivivel() {
-		return Combustivel.toEnum(tipoCombustivivel);
+		return tipoCombustivel;
 	}
 
-	public void setTipoCombustivivel(Combustivel tipoCombustivivel) {
-		this.tipoCombustivivel = tipoCombustivivel.getCod();
+	public void setTipoCombustivivel(Combustivel tipoCombustivel) {
+		this.tipoCombustivel = tipoCombustivel;
 	}
 
 	public Fipe getFipe() {

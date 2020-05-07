@@ -40,4 +40,12 @@ public class FipeServiceImpl implements FipeService {
 		return dao.findAll();
 	}
 
+	@Override
+	public boolean fipeTemVeiculo(Long id) {
+		if(findById(id).getVeiculos().isEmpty()) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 }

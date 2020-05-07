@@ -19,16 +19,14 @@ public class VeiculoServiceImpl implements VeiculoService {
 
 	@Override
 	public void update(Veiculo veiculo) {
-		dao.update(veiculo);
-		
+		dao.update(veiculo);	
 	}
 
 	@Override
 	public void delete(Long id) {
-		dao.delete(id);
-		
+		dao.delete(id);		
 	}
-
+	
 	@Override @Transactional(readOnly = true)
 	public Veiculo findById(Long id) {
 		return dao.findById(id);
