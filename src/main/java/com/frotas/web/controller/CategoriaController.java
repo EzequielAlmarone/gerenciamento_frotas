@@ -51,12 +51,11 @@ public class CategoriaController {
 	} 
 	@GetMapping("/excluir/{id}")
 	public String excluir(@PathVariable("id") Long id, ModelMap model) {
-		Categoria cat = service.findById(id);
 		if(service.categoriaTemVeiculo(id)) {
-			model.addAttribute("fail", "A categoria \""+ cat.getCategoria() +"\" não pode ser removida, pois a veículo Cadastrado a está categoria");
+			model.addAttribute("fail", "A categoria não pode ser removida, pois a veículo Cadastrado a está categoria");
 		}else {
 			service.delete(id);
-			model.addAttribute("success", "A categoria \""+ cat.getCategoria() +"\" foi removida com sucesso");
+			model.addAttribute("success", "A categoria foi removida com sucesso");
 		}
 		return listar(model);
 	}
